@@ -2,9 +2,9 @@
     <!-- Header & Filter Bar -->
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
         <div>
-            <h2 class="text-2xl font-bold text-gray-800">
-                Laporan Penjualan
-                <span class="text-sm font-normal text-pink-600 bg-pink-50 border border-pink-200 px-3 py-1 rounded-full ml-2">
+            <h2 class="text-2xl font-bold text-gray-800 flex items-center flex-wrap gap-2">
+                <span>Laporan Penjualan</span>
+                <span class="text-sm font-normal text-pink-600 bg-pink-50 border border-pink-200 px-3 py-1 rounded-full">
                     @if($filterPeriod === 'all')
                         Semua Waktu
                     @elseif($filterPeriod === 'today')
@@ -106,7 +106,7 @@
         <div>
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-bold text-red-600 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="width: 20px; height: 20px; min-width: 20px; min-height: 20px; flex-shrink: 0;" class="text-red-600 inline-block" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                     </svg>
                     Peringatan Stok Tipis (< 10)
@@ -138,13 +138,13 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Riwayat Pesanan / Transaksi -->
         <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                 <h3 class="text-lg font-bold text-gray-800">Riwayat Transaksi</h3>
-                <div class="relative">
-                    <input type="text" wire:model.live.debounce.300ms="search" placeholder="Cari nama/metode/kode..." class="w-full sm:w-60 bg-white border border-gray-200 text-xs rounded-lg px-3 py-1.5 pl-8 focus:ring-2 focus:ring-pink-500 focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400 absolute left-2.5 top-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="relative w-full sm:w-64">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" style="width: 14px; height: 14px; min-width: 14px; min-height: 14px; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none;" class="text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
+                    <input type="text" wire:model.live.debounce.300ms="search" placeholder="Cari nama/metode/kode..." style="padding-left: 32px;" class="w-full bg-white border border-gray-200 text-xs rounded-lg pr-3 py-2 focus:ring-2 focus:ring-pink-500 focus:outline-none shadow-sm">
                 </div>
             </div>
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -264,4 +264,5 @@
         </div>
     </div>
 </div>
+
 
