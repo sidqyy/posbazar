@@ -47,11 +47,15 @@ class DailyReport extends Component
             $saleItemsQuery->whereYear('created_at', $now->year)->whereMonth('created_at', $now->month);
             $mutationsQuery->whereYear('created_at', $now->year)->whereMonth('created_at', $now->month);
         } elseif ($this->filterPeriod === 'custom' && ! empty($this->startDate) && ! empty($this->endDate)) {
-            $start = Carbon::parse($this->startDate)->startOfDay();
-            $end = Carbon::parse($this->endDate)->endOfDay();
-            $salesQuery->whereBetween('created_at', [$start, $end]);
-            $saleItemsQuery->whereBetween('created_at', [$start, $end]);
-            $mutationsQuery->whereBetween('created_at', [$start, $end]);
+            try {
+                $start = Carbon::parse($this->startDate)->startOfDay();
+                $end = Carbon::parse($this->endDate)->endOfDay();
+                $salesQuery->whereBetween('created_at', [$start, $end]);
+                $saleItemsQuery->whereBetween('created_at', [$start, $end]);
+                $mutationsQuery->whereBetween('created_at', [$start, $end]);
+            } catch (\Throwable $e) {
+                // Ignore invalid date input safely
+            }
         }
 
         $totalSalesAmount = (clone $salesQuery)->sum('total_amount');

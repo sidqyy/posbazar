@@ -11,8 +11,10 @@
                         Hari Ini ({{ \Carbon\Carbon::today()->translatedFormat('d F Y') }})
                     @elseif($filterPeriod === 'month')
                         Bulan Ini ({{ \Carbon\Carbon::now()->translatedFormat('F Y') }})
-                    @elseif($filterPeriod === 'custom')
+                    @elseif($filterPeriod === 'custom' && !empty($startDate) && !empty($endDate))
                         Custom ({{ \Carbon\Carbon::parse($startDate)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($endDate)->format('d/m/Y') }})
+                    @elseif($filterPeriod === 'custom')
+                        Custom Tanggal
                     @endif
                 </span>
             </h2>
